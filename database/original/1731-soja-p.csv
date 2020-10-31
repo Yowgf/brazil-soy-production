@@ -1,0 +1,34 @@
+﻿"Tabela 1731 - Quantidade produzida por produtos das lavouras temporárias - série histórica (1940/2006)"
+"","Ano","Produtos da lavoura temporária","Variável",""
+"Brasil","1940","Soja em grão","Quantidade produzida (Toneladas)","1925"
+"Brasil","1950","Soja em grão","Quantidade produzida (Toneladas)","45023"
+"Brasil","1960","Soja em grão","Quantidade produzida (Toneladas)","216033"
+"Brasil","1970","Soja em grão","Quantidade produzida (Toneladas)","1884227"
+"Brasil","1975","Soja em grão","Quantidade produzida (Toneladas)","8721274"
+"Brasil","1980","Soja em grão","Quantidade produzida (Toneladas)","12757962"
+"Brasil","1985","Soja em grão","Quantidade produzida (Toneladas)","16730087"
+"Brasil","1995","Soja em grão","Quantidade produzida (Toneladas)","21563768"
+"Brasil","2006","Soja em grão","Quantidade produzida (Toneladas)","46195843"
+"Fonte: IBGE - Censo Agropecuário"
+
+"Notas"
+"1 - Os dados da série histórica disponibilizados nesta tabela são reflexo das publicações disponíveis à época. Especificamente para o ano de 1995, pequenas 
+correções foram feitas após a publicação, o que pode ocasionar uma diferença mínima entre estes e aqueles disponíveis em outras tabelas cujos dados foram tabulados posteriormente à divulgação oficial."
+"2 - Para 2006: os valores estão expressos em toneladas, exceto para abacaxi, expressos em mil frutos."
+""
+"Legenda"
+"Símbolo","Significado"
+"-","Zero absoluto, não resultante de um cálculo ou arredondamento.
+Ex: Em determinado município não existem pessoas de 14 anos de idade sem instrução."
+"0","Zero resultante de um cálculo ou arredondamento.
+Ex: A inflação do feijão em determinada Região Metropolitana foi 0.
+Determinado município produziu 400 kg de sementes de girassol e os dados da tabela são expressos em toneladas."
+"X","Valor inibido para não identificar o informante.
+Ex: Determinado município só possui uma empresa produtora de cimento, logo o valor de sua produção deve ser inibido."
+"..","Valor não se aplica.
+Ex: Não se pode obter o total da produção agrícola em determinado município quando os produtos agrícolas são contabilizados com unidades de medida distintas."
+"...","Valor não disponível.
+Ex: A produção de feijão em determinado município não foi pesquisada ou determinado município não existia no ano da pesquisa."
+"A a Z
+(exceto X)","Significa uma faixa de valores. Varia em função da tabela (se for o caso).
+Ex: O nível de precisão da produção estimada de combustíveis está na faixa A (95 a 100%)"
