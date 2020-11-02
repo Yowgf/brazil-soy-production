@@ -1,0 +1,26 @@
+"Fonte: IBGE - Levantamento Sistemático da Produção Agrícola"
+
+"Notas"
+"1 - Para as Unidades da Federação que, por força do calendário agrícola, ainda não dispõem das estimativas iniciais, os dados correspondem a uma projeção obtida a partir das informações de anos anteriores;"
+"2 - As produções de abacaxi e de coco-da-baía são expressas em mil frutos e os seus rendimentos médios em frutos/ha."
+"3 - Utilizou-se a padronização de 61% para a conversão da produção do algodão em caroço para caroço de algodão, apenas para a totalização da produção dos cereais, leguminosas e oleaginosas."
+"4 - Possíveis diferenças entre somas de parcelas e respectivos totais são provenientes do critério de arredondamento."
+"5 - As informações mensais que compõem a série histórica estão disponível a partir de setembro de 2006."
+"6 - A partir de janeiro de 2018 foram retirados da divulgação os seguintes produtos: abacaxi, alho, cebola, coco-da-baía, guaraná, maçã, malva, pimenta-do-reino, sisal/agave. Os mesmos continuam sendo acompanhados na pesquisa anual da Produção Agrícola Municipal."
+""
+"Legenda"
+"Símbolo","Significado"
+"-","Zero absoluto, não resultante de um cálculo ou arredondamento.
+Ex: Em determinado município não existem pessoas de 14 anos de idade sem instrução."
+"0","Zero resultante de um cálculo ou arredondamento.
+Ex: A inflação do feijão em determinada Região Metropolitana foi 0.
+Determinado município produziu 400 kg de sementes de girassol e os dados da tabela são expressos em toneladas."
+"X","Valor inibido para não identificar o informante.
+Ex: Determinado município só possui uma empresa produtora de cimento, logo o valor de sua produção deve ser inibido."
+"..","Valor não se aplica.
+Ex: Não se pode obter o total da produção agrícola em determinado município quando os produtos agrícolas são contabilizados com unidades de medida distintas."
+"...","Valor não disponível.
+Ex: A produção de feijão em determinado município não foi pesquisada ou determinado município não existia no ano da pesquisa."
+"A a Z
+(exceto X)","Significa uma faixa de valores. Varia em função da tabela (se for o caso).
+Ex: O nível de precisão da produção estimada de combustíveis está na faixa A (95 a 100%)"
