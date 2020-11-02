@@ -1,3 +1,7 @@
 # ICD-20201
 
-Por favor entre no notebook da apresentação em src/apresentacao.ipynb
+- O notebook da apresentação está localizado em src/apresentacao.ipynb
+
+- O relatório se encontra no diretório principal, sob "relatorio.pdf"
+
+- O link para o vídeo do youtube está no arquivo de texto "video.txt"
