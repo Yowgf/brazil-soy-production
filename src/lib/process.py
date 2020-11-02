@@ -225,4 +225,12 @@ class process:
 		regstr = 'Região'
 		separated = (table[table[regstr] == reg] for reg in regions)
 		return separated
+
+	# Returns x and y for table with 3 columns, being two of
+	#   them 'Ano' and 'Produtividade (Tonelada / Hectare)'
+	@staticmethod
+	def xy_poly(table):
+		x = table['Ano'].values.reshape(-1, 1)
+		y = table['Produtividade (Tonelada / Hectare)'].values.reshape(-1, 1)
+		return x, y
 	

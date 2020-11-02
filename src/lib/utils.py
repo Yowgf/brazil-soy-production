@@ -58,12 +58,6 @@ class utils:
 		supertable = tableA.append(tableB)
 
 		m = len(tableA)
-		"""
-		boolA = np.append(np.repeat(True, m), np.repeat(False, m))
-		boolB = np.append(np.repeat(False, m), np.repeat(True, m))
-		supertable.insert(loc=2, column='A', value=boolA)
-		supertable.insert(loc=3, column='B', value=boolB)
-		"""
 		supertable = supertable.drop(columns=supertable.columns[1])
 		
 		# Do numperms permutations
