@@ -1,27 +1,25 @@
-import pandas as pd
-import plotly.express as px
-from dash import Dash, Input, Output, callback, dcc, html
+import dash
+from dash import Dash, dcc, html
+from flask import Flask
 
-import lib
-
-df = lib.process().get_table()
-
-app = Dash(__name__)
-
+# Main page
+app = Dash(__name__, use_pages=True)
 app.layout = html.Div(
     [
-        html.H1(children="Brazil Soy Production", style={"textAlign": "center"}),
-        dcc.Dropdown(df.region.unique(), "Brasil", id="dropdown-selection"),
-        dcc.Graph(id="graph-content"),
+        html.H1("Multi-page app with Dash Pages"),
+        html.Div(
+            [
+                html.Div(
+                    dcc.Link(
+                        f"{page['name']} - {page['path']}", href=page["relative_path"]
+                    )
+                )
+                for page in dash.page_registry.values()
+            ]
+        ),
+        dash.page_container,
     ]
 )
-
-
-@callback(Output("graph-content", "figure"), Input("dropdown-selection", "value"))
-def update_graph(value):
-    dff = df[df.region == value]
-    return px.line(dff, x="year", y="production")
-
 
 if __name__ == "__main__":
     app.run_server(debug=True)
