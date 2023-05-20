@@ -240,7 +240,7 @@ class process:
                 prod_col[i] = 0
             else:
                 prod_col[i] = numerator[i] / denominator[i]
-        table.insert(loc=2, column="Produtividade (Tonelada / Hectare)", value=prod_col)
+        table.insert(loc=2, column="productivity", value=prod_col)
         return table.drop(columns=table.columns[3:])
 
     # Receives a normalized table.

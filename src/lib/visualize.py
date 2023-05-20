@@ -28,7 +28,7 @@ class visualize:
         plt.rcParams["legend.fontsize"] = 20
         plt.rcParams["xtick.labelsize"] = 20
         plt.rcParams["ytick.labelsize"] = 20
-        plt.rcParams["lines.linewidth"] = 1
+        plt.rcParams["lines.linewidth"] = 2
         # ... until here
         # Below is local
         plt.rcParams["figure.titlesize"] = 24

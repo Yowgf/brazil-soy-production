@@ -5,6 +5,9 @@ install:
 	poetry config virtualenvs.in-project true
 	poetry install
 
+run:
+	cd src && python3 app.py
+
 lint:
 	poetry run black src src/lib
 	poetry run isort src src/lib
