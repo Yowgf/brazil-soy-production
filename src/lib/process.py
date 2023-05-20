@@ -1,4 +1,4 @@
-# Project ICD-TP1 python file
+# Project Brazil Soy Production python file
 #
 # lib package
 # process class
@@ -87,14 +87,14 @@ class process:
 		# Abaixo é o algoritmo que pega o ultimo mes de cada ano
 		########################################################
 		table6588_meses = table6588['Mês']
-		# A tabela cobre de 2006 a 2020, mas primeiro pegamos
+		# A tabela cobre de 2006 a 2023, mas primeiro pegamos
 		#   todos os anos menos o ultimo no range abaixo, porque
 		#   o ultimo deve ser tratado especialmente abaixo.
 		table6588_first_year = 2006
-		table6588_last_year  = 2020
+		table6588_last_year  = 2023
 		
 		table6588_common_last_month    = 'dezembro' # Ultimo mês nos anos sem ser o último
-		table6588_last_year_last_month = 'agosto'   # Último mês para o último ano
+		table6588_last_year_last_month = 'abril'    # Último mês para o último ano
 		
 		table6588_range_anos = np.arange(table6588_first_year, table6588_last_year) 
 		
@@ -124,7 +124,8 @@ class process:
 		# Finalmente
 		# Renomeando columa "Mês"
 		table6588 = table6588.rename(columns={'Mês': 'Ano'})
-		table6588['Ano'] = table6588['Ano'].str.replace('dezembro |agosto ', '', regex=True)
+		table6588['Ano'] = table6588['Ano'].str.replace(
+                f'{table6588_common_last_month} |{table6588_last_year_last_month} ', '', regex=True)
 		# Ordenando por ano e regiao
 		table6588 = table6588.sort_values(by=['Região', 'Ano'])
 		# Consertando indexes
