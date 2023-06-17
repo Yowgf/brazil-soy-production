@@ -8,11 +8,15 @@ packages = [{include = "brazil_soy_production"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+scikit-learn = "^1.2.2"
+pandas = "^2.0.2"
+matplotlib = "^3.7.1"
 
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
 isort = "^5.12.0"
+pytest = "^7.3.2"
 
 [build-system]
 requires = ["poetry-core"]

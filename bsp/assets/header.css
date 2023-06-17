@@ -1,0 +1,9 @@
+.header {
+    font-size: 2em;
+    padding: 0 0.5em 0 0.5em;
+    background-color: orange;
+}
+
+.header-elem {
+    padding: 0.25em;
+}

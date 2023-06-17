@@ -6,19 +6,20 @@ install:
 	poetry install
 
 run:
-	cd src && python3 app.py
+	cd bsp && python3 app.py
 
 lint:
-	poetry run black src src/lib
-	poetry run isort src src/lib
+	poetry run black bsp bsp/lib
+	poetry run isort bsp bsp/lib
 
 lint-check:
-	poetry run flake8 --ignore=E501,W503 src
-	poetry run isort --check-only src
-	poetry run mypy src
+	poetry run flake8 --ignore=E501,W503 bsp
+	poetry run isort --check-only bsp
+	poetry run mypy bsp
 
 unittest:
 	poetry run pytest $(PYTEST_FLAGS)
+
 test: unittest
 
 check: lint-check test
