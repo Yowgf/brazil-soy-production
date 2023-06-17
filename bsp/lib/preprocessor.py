@@ -84,6 +84,9 @@ class Preprocessor:
                 "Área colhida (Hectares)": Preprocessor._col_area,
             }
         )
+        table283.year = pd.to_numeric(table283.year)
+        table283.production = pd.to_numeric(table283.production)
+        table283.area = pd.to_numeric(table283.area)
         return table283
 
     # Ler e limpar tabela 6588, que contém estimativas mensais

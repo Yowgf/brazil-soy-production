@@ -18,7 +18,7 @@ lint-check:
 	poetry run mypy bsp
 
 unittest:
-	poetry run pytest $(PYTEST_FLAGS)
+	poetry run pytest -v --cov-report=html --cov=bsp $(PYTEST_FLAGS) tests
 
 test: unittest
 
