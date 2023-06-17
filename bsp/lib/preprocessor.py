@@ -9,9 +9,13 @@ class Preprocessor:
     _col_value = "value"
     _col_production = "production"
     _col_area = "area"
+    _col_bgr = "Brasil e Grande Região"
+    _col_unifed = "Unidade da Federação"
+    _col_valor = "Valor"
 
-    def __init__(self, database_dir: str):
+    def __init__(self, database_dir: str, dbfile_suffix: str = "macroregions"):
         self._dbdir = database_dir
+        self._dbfile_suffix = dbfile_suffix
         self.__table283 = self.__gentable283()
         self.__table6588 = self.__gentable6588()
         self.__utable = self.__unite()
@@ -23,10 +27,10 @@ class Preprocessor:
         return self.__table283, self.__table6588
 
     def _table283_csv_path(self) -> str:
-        return os.path.join(self._dbdir, "283-soja-bgr-ap.csv")
+        return os.path.join(self._dbdir, f"283-soja-{self._dbfile_suffix}.csv")
 
     def _table6588_csv_path(self) -> str:
-        return os.path.join(self._dbdir, "6588-soja-bgr-ap.csv")
+        return os.path.join(self._dbdir, f"6588-soja-{self._dbfile_suffix}.csv")
 
     # Gets rid of year 2006 in table283, and appends the
     #   two original tables into one.
@@ -36,7 +40,18 @@ class Preprocessor:
         united = pd.concat([t283_not2006, t6588])
         # Sorting values again
         united = (united.sort_values(by=["region", "year"])).reset_index(drop=True)
+        united.year = pd.to_numeric(united.year)
+        united.production = pd.to_numeric(united.production)
+        united.area = pd.to_numeric(united.area)
         return united
+
+    def _get_original_region_col(self):
+        if self._dbfile_suffix == "macroregions":
+            return Preprocessor._col_bgr
+        elif self._dbfile_suffix == "states":
+            return Preprocessor._col_unifed
+        else:
+            return "unknown"
 
     # Ler e limpar tabela 283, que contém dados sobre a produção
     #   vegetal e área colhida de soja, separados por região(inclui
@@ -52,8 +67,8 @@ class Preprocessor:
         table283 = table283.drop("Variável", axis=1)
         table283 = table283.rename(
             columns={
-                "Brasil e Grande Região": "Região",
-                "Valor": "Produção vegetal (Toneladas)",
+                self._get_original_region_col(): "Região",
+                Preprocessor._col_valor: "Produção vegetal (Toneladas)",
             }
         )
         # Obtendo os valores para area colhida, em hectares
@@ -93,7 +108,7 @@ class Preprocessor:
     #   de produção vegetal e área colhida, para cada região e
     #   para o Brasil inteiro.
     def __gentable6588(self):
-        table6588 = pd.read_csv(self._table6588_csv_path(), skiprows=2)
+        table6588 = pd.read_csv(self._table6588_csv_path(), skiprows=1)
 
         # Processo parecido ao do processamento para tabela283
         temp = table6588.copy()
@@ -105,8 +120,8 @@ class Preprocessor:
         # Renomeamos colunas
         table6588 = table6588.rename(
             columns={
-                "Brasil e Grande Região": "Região",
-                "Valor": "Produção vegetal (Toneladas)",
+                self._get_original_region_col(): "Região",
+                Preprocessor._col_valor: "Produção vegetal (Toneladas)",
             }
         )
         # Obtemos valores da outra "Variável"
