@@ -50,6 +50,8 @@ class Preprocessor:
             return Preprocessor._col_bgr
         elif self._dbfile_suffix == "states":
             return Preprocessor._col_unifed
+        elif self._dbfile_suffix == "all":
+            return Preprocessor._col_region
         else:
             return "unknown"
 

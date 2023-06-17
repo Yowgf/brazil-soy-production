@@ -4,7 +4,7 @@ from dash import Input, Output, callback, dcc, html
 
 import lib
 
-df = lib.process().get_table()
+df = lib.Preprocessor("./database", "states").get_table()
 
 dash.register_page(__name__)
 
