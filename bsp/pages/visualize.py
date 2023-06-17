@@ -12,6 +12,14 @@ df = lib.Preprocessor("./database", "all").get_table()
 regions_replacement = {
     feature['properties']['name']: feature['id'] for feature in br_regions_json['features']
 }
+macroregions = {
+    "Brasil": regions_replacement.values(),
+    "Centro-Oeste": ["MT", "GO", "MS", "DF"],
+    "Norte": ["AC", "AM", "RR", "RO", "PA" "AP", "TO"],
+    "Nordeste": ["MA", "PI", "CE", "RN", "PB", "PE", "AL", "SE", "BA"],
+    "Sudeste": ["MG", "SP", "ES", "RJ"],
+    "Sul": ["PR", "SC", "RS"]
+}
 
 dash.register_page(__name__)
 
@@ -19,9 +27,9 @@ layout = html.Div(
     [
         html.H1(children="Brazil Soy Production Area", style={"textAlign": "center"}),
         dcc.Dropdown(df.region.unique(), "Brasil", id="region-dropdown",
-                     style={"max-width": "50%"}),
+                     className="dropdown"),
         dcc.Dropdown(["area", "production"], "area", id="type-dropdown",
-                     style={"max-width": "50%"}),
+                     className="dropdown"),
         dcc.Graph(id="colormap"),
         dcc.Graph(id="linechart"),
     ]
@@ -34,8 +42,12 @@ layout = html.Div(
 )
 def update_colormap(region, typ):
     print("Updating area colormap")
-    filtered_df = df[df.region == region]
+    filtered_df = df
     filtered_df["region"] = df["region"].map(regions_replacement)
+    if region in macroregions:
+        filtered_df = df[df.region.isin(macroregions[region])]
+    else:
+        filtered_df = df[df.region == region]
     print("Filtered df:", filtered_df)
     fig = px.choropleth(filtered_df,
                         geojson=br_regions_json,
