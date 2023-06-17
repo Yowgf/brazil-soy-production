@@ -25,30 +25,26 @@ dash.register_page(__name__)
 
 layout = html.Div(
     [
-        html.H1(children="Brazil Soy Production Area", style={"textAlign": "center"}),
-        dcc.Dropdown(df.region.unique(), "Brasil", id="region-dropdown",
-                     className="dropdown"),
-        dcc.Dropdown(["area", "production"], "area", id="type-dropdown",
-                     className="dropdown"),
-        dcc.Graph(id="colormap"),
+        html.H1(children="Brazil Soy Production", style={"textAlign": "center"}),
+        html.Div([
+            dcc.Dropdown(df.region.unique(), "Brasil", id="region-dropdown",
+                         className="dropdown"),
+            dcc.Dropdown(["area", "production"], "area", id="type-dropdown",
+                         className="dropdown"),
+        ], className="dropdowns"),
+        dcc.Graph(id="colormap-before"),
+        dcc.Graph(id="colormap-after"),
         dcc.Graph(id="linechart"),
     ]
 )
 
-@callback(
-    Output("colormap", "figure"),
-    Input("region-dropdown", "value"),
-    Input("type-dropdown", "value")
-)
-def update_colormap(region, typ):
-    print("Updating area colormap")
-    filtered_df = df
+def colormap(region: str, typ: str, year: int):
+    filtered_df = df[df.year == year]
     filtered_df["region"] = df["region"].map(regions_replacement)
     if region in macroregions:
         filtered_df = df[df.region.isin(macroregions[region])]
     else:
         filtered_df = df[df.region == region]
-    print("Filtered df:", filtered_df)
     fig = px.choropleth(filtered_df,
                         geojson=br_regions_json,
                         locations='region',
@@ -64,6 +60,24 @@ def update_colormap(region, typ):
     fig.update_geos(fitbounds="locations", visible=False)
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     return fig
+
+@callback(
+    Output("colormap-before", "figure"),
+    Input("region-dropdown", "value"),
+    Input("type-dropdown", "value")
+)
+def update_colormap_before(region, typ):
+    print("Updating before colormap")
+    return colormap(region, typ, 2006)
+
+@callback(
+    Output("colormap-after", "figure"),
+    Input("region-dropdown", "value"),
+    Input("type-dropdown", "value")
+)
+def update_colormap_after(region, typ):
+    print("Updating after colormap")
+    return colormap(region, typ, 2023)
 
 @callback(
     Output("linechart", "figure"),
