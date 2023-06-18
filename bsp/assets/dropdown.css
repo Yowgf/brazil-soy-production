@@ -1,9 +1,0 @@
-.dropdowns {
-    display: flex;
-}
-
-.dropdown {
-    display: flex;
-    flex-direction: row;
-    margin: 0.5em;
-}

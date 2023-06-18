@@ -3,7 +3,11 @@ from dash import Dash, dcc, html
 from flask import Flask
 
 # Main page
-app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True)
+app = Dash(__name__,
+           use_pages=True,
+           # Necessary to allow callbacks to be registered after app
+           # initialization.
+           suppress_callback_exceptions=True)
 app.layout = html.Div(
     [
         html.Header(

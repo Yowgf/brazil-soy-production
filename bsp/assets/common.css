@@ -20,3 +20,37 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+.dropdowns {
+    display: flex;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: row;
+    margin: 0.5em;
+}
+
+.dash-dropdown {
+    min-width: 10em;
+}
+
+.graphs {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-gap: 1em;
+}
+
+.graph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graph-label {
+    font-size: 3em;
+}
+
+.full-width {
+  grid-column: 1 / -1; /* Span the item across all columns */
+}
