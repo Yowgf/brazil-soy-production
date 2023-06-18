@@ -99,8 +99,8 @@ def colormap(region: str, typ: str, year: int):
                                      filtered_df[typ][filtered_df.year <= current_end_year].max() * 0.8),
                         scope="south america",
                         labels={
-                            'production': 'Soy Production (Tons)',
-                            'area': 'Soy Production Area (Acres)'
+                            'production': 'Production (Tons)',
+                            'area': 'Production Area (Acres)'
                         },
     )
     fig.update_geos(fitbounds="locations", visible=False)
