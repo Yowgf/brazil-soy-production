@@ -32,25 +32,26 @@ layout = html.Div(
             dcc.Dropdown(["area", "production"], "area", id="type-dropdown",
                          className="dropdown"),
         ], className="dropdowns"),
-        dcc.Graph(id="colormap-before"),
-        dcc.Graph(id="colormap-after"),
+        dcc.Graph(id="colormpa"),
+        dcc.Graph(id="colormpb"),
         dcc.Graph(id="linechart"),
     ]
 )
 
 def colormap(region: str, typ: str, year: int):
-    filtered_df = df[df.year == year]
-    filtered_df["region"] = df["region"].map(regions_replacement)
+    print(f"Generating colormap. {region=} {typ=} {year=}")
+    filtered_df = df[df.year == year].copy()
+    filtered_df["region"] = filtered_df["region"].map(regions_replacement)
     if region in macroregions:
-        filtered_df = df[df.region.isin(macroregions[region])]
+        filtered_df = filtered_df[filtered_df.region.isin(macroregions[region])]
     else:
-        filtered_df = df[df.region == region]
+        filtered_df = filtered_df[filtered_df.region == region] 
     fig = px.choropleth(filtered_df,
                         geojson=br_regions_json,
                         locations='region',
                         color=typ,
                         color_continuous_scale="Viridis",
-                        range_color=(0, 1.5e7),
+                        range_color=(0, filtered_df[typ].max()),
                         scope="south america",
                         labels={
                             'production': 'Soy Production (Tons)',
@@ -62,7 +63,7 @@ def colormap(region: str, typ: str, year: int):
     return fig
 
 @callback(
-    Output("colormap-before", "figure"),
+    Output("colormpa", "figure"),
     Input("region-dropdown", "value"),
     Input("type-dropdown", "value")
 )
@@ -71,7 +72,7 @@ def update_colormap_before(region, typ):
     return colormap(region, typ, 2006)
 
 @callback(
-    Output("colormap-after", "figure"),
+    Output("colormpb", "figure"),
     Input("region-dropdown", "value"),
     Input("type-dropdown", "value")
 )

@@ -5,5 +5,5 @@
 .dropdown {
     display: flex;
     flex-direction: row;
-    background-color: blue;
+    margin: 0.5em;
 }
